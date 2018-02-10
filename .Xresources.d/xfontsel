@@ -1,0 +1,9 @@
+! xfontsel - just makes is look less ugly.
+XFontSel*menu*showUnselectable: false
+XFontSel*MenuButton.shadowWidth: 2
+XFontsel*Toggle*ToggleStyle: check
+XFontsel*MenuButton*Justify:    left
+XFontsel*MenuButton*MenuButtonStyle: select
+.xfontsel.pane.fieldBox.MenuButton.borderWidth: 1
+.xfontsel.pane.fieldBox.MenuButton.internalHeight: 2
+.xfontsel.pane.fieldBox.MenuButton.internalWidth: 3

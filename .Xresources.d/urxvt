@@ -1,0 +1,21 @@
+! urxvt
+URxvt*font:         	xft:fantasque sans mono:size=10, xft:DejaVu Sans Mono:size=10
+URxvt*scrollBar:    	plain
+URxvt*scrollBar_right: 	true
+URxvt*fading:       	20
+URxvt*depth:        	32
+URxvt*background:   	rgba:0000/0000/0000/dead
+!URxvt*background:	black
+URxvt*visualBell:   	true
+URxvt*borderLess:	    false
+!URxvt*cursorUnderline:  1
+
+! perl extensions
+
+URxvt*perl-ext-common:  default,matcher,clipboard
+URxvt*matcher.button:   1
+URxvt*url-launcher:     /usr/bin/firefox
+URxvt*keysym.C-C:       perl:clipboard:copy
+URxvt*keysym.C-V:       perl:clipboard:paste
+URxvt*termName:         rxvt-256color
+
