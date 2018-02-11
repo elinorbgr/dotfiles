@@ -1,0 +1,39 @@
+#!/bin/sh
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+CYAN='\033[0;36m'
+NC='\033[0m'
+
+info() {
+    echo -e "${CYAN}$1${NC}"
+}
+
+error() {
+    echo -e "${RED}$1${NC}"
+    exit 1
+}
+
+success() {
+    echo -e "${RED}$1${NC}"
+}
+
+# Fish configuration
+info "Checking for fish shell..."
+which fish 2> /dev/null
+fish_found=$?
+if [ $fish_found -eq 0 ];
+then
+    success "Fish shell found."
+    info " -> Installing virtualfish..."
+    pip install --user virtualfish || error "!! Failed to install virtualfish"
+    info " -> Installing oh-my-fish..."
+    curl -L https://get.oh-my.fish > install || error "!! Failed to download oh-my-fish installer"
+    curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install.sha256 > install.sha256 || error "!! Failed to download oh-my-fish checksum"
+    sha256sum -c install.sha256 || error "!! Checksum failed for oh-my-fish."
+    fish install --noninteractive || error "!! Install failed for oh-my-fish."
+    fish -c 'omf install' || error "!! Oh-my-fish failed to install some packages"
+    success "Successfully configured fish"
+else
+    info "No fish shell available, skipping."
+fi
